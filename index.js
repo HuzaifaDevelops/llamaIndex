@@ -32,11 +32,18 @@ async function main() {
 
     // let loading = true;
 
+    const startTime = performance.now();
+
     const response = await queryEngine.query({
       query: "whats the man doing?",
     });
 
+    // Calculate the time difference after receiving the response
+    const endTime = performance.now();
+    const elapsedTimeInSeconds = (endTime - startTime) / 1000;
+
     console.log("Query Response:", response.toString());
+    console.log(`Response time: ${elapsedTimeInSeconds} seconds`);
   } catch (error) {
     console.error("Error reading file:", error);
     return;
